@@ -1,15 +1,15 @@
-import Banner from "./pages/Home/Banner";
-import BookMarquee from "./pages/Home/Marquee";
+import { Outlet } from "react-router";
+import { ToastContainer } from "react-toastify";
 import Navbar from "./pages/Home/Navbar";
+import Footer from "./pages/Home/Footer";
 
 function App() {
   return (
     <>
+      <ToastContainer />
       <Navbar></Navbar>
-      <Banner></Banner>
-
-      <BookMarquee></BookMarquee>
-    
+      <Outlet></Outlet>
+      <Footer></Footer>
     </>
   );
 }

@@ -73,20 +73,18 @@ useEffect(() => {
 }, []);
 
   return (
-    <div ref={bodyRef} className="body">
-      <div className="overlay">
-        Slide: <span className="count">1</span>
-      </div>
+    <div ref={bodyRef} className="body mt-4 w-10/12 mx-auto">
+   
 
       <div className="slide">
         <div className="slide__container">
           <img className="slide__img" src="/src/assets/images/book1.jpg" />
-          <img className="slide__img" src="/src/assets/images/book2.webp" />
+          <img className="slide__img" src="/src/assets/images/book6.jpg" />
           <img className="slide__img" src="/src/assets/images/book3.jpg" />
         </div>
       </div>
 
-      <div className="slide">
+      <div className="slide ">
         <div className="slide__container">
           <img className="slide__img" src="/src/assets/images/boo4.jpg" />
           <img className="slide__img" src="/src/assets/images/book5.jpg" />
@@ -96,7 +94,7 @@ useEffect(() => {
 
       <div className="slide">
         <div className="slide__container">
-          <img className="slide__img" src="/src/assets/images/book7.jpg" />
+          <img className="slide__img" src="/src/assets/images/book5.jpg" />
           <img className="slide__img" src="/src/assets/images/book3.jpg" />
           <img className="slide__img" src="/src/assets/images/book2.webp" />
         </div>

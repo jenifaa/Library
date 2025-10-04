@@ -1,5 +1,10 @@
 @import "tailwindcss";
 @import "tw-animate-css";
+@import url("https://fonts.googleapis.com/css2?family=Sora&display=swap");
+
+@import url("https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap");
+
+
 
 @custom-variant dark (&:is(.dark *));
 
@@ -40,7 +45,9 @@
   --color-sidebar-border: var(--sidebar-border);
   --color-sidebar-ring: var(--sidebar-ring);
 }
-
+body {
+  font-family: "Sora", sans-serif;
+}
 :root {
   --radius: 0.625rem;
   --background: oklch(1 0 0);
@@ -119,17 +126,11 @@
   }
 }
 
-@import url("https://fonts.googleapis.com/css2?family=Sora&display=swap");
 
-@import url("https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap");
-
-body {
-  font-family: "Sora", sans-serif;
-}
 
 .body {
   overflow: hidden;
-  height: 70vh; /* reduced height */
+  height: 65vh; /* reduced height */
   position: relative;
   background-color: #56565700;
 }
@@ -165,12 +166,7 @@ body {
   border-radius: 0.5rem;
 }
 
-.overlay {
-  position: absolute;
-  bottom: 1rem;
-  right: 1rem;
-  font-size: 1.5rem;
-}
+
 
 .font {
   font-family: "Great Vibes", cursive;

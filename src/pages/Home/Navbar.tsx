@@ -10,13 +10,14 @@ const Navbar = () => {
   const navLinks = [
     { name: "Home", path: "/" },
     { name: "Services", path: "/services" },
-    { name: "About", path: "/about" },
-    { name: "Contact", path: "/contact" },
+    { name: "Books", path: "/books" },
+    { name: "Borrow", path: "/borrow" },
+    { name: "Add Books", path: "/add" },
   ];
 
   return (
-    <header className="bg-white/80 backdrop-blur-lg shadow-sm sticky top-0 z-50 border-b">
-      <div className="container mx-auto px-4 flex justify-between items-center h-16">
+    <header className="bg-white/80 backdrop-blur-lg  shadow-sm sticky top-0 z-50 border-b">
+      <div className="container mx-auto px-12 flex justify-between items-center h-16">
         {/* Logo */}
         <Link to="/" className="text-xl font-bold text-shadow-red-950 flex items-center">
           <Lottie
