@@ -14,9 +14,6 @@ import { useBorrowBookMutation } from "@/store/api/booksApi";
 import { toast } from "react-toastify";
 import { useNavigate, useParams } from "react-router";
 
-
-
-
 interface BorrowFormData {
   bookId: string;
   bookTitle: string;
@@ -26,6 +23,7 @@ interface BorrowFormData {
   borrowerPhone: string;
   borrowDate: Date;
   dueDate: Date;
+  quantity: number;
   additionalNotes?: string;
 }
 
@@ -39,10 +37,10 @@ export default function BorrowBooks() {
   const form = useForm<BorrowFormData>({
     defaultValues: {
       borrowDate: new Date(),
-      dueDate: new Date(Date.now() + 14 * 24 * 60 * 60 * 1000), 
+      dueDate: new Date(Date.now() + 14 * 24 * 60 * 60 * 1000),
+      quantity: 1,
     },
   });
-
 
   useEffect(() => {
     if (book) {
@@ -57,19 +55,30 @@ export default function BorrowBooks() {
     setIsSubmitting(true);
     try {
       await borrowBook(data).unwrap();
-      toast.success("Book borrowed successfully! 📚");
+      toast.success(`Successfully borrowed ${data.quantity} copy(s) of "${book.title}"! 📚`);
       
-   
-  
+      // Redirect after success
+      setTimeout(() => {
+        navigate("/books");
+      }, 2000);
       
     } catch (error: unknown) {
       console.error("Borrow error:", error);
+      
+      // Handle RTK Query error
+      if (typeof error === 'object' && error !== null && 'data' in error) {
+        const apiError = error as { data: { message?: string } };
+        toast.error(apiError.data?.message || "Failed to borrow book. Please try again.");
+      } else {
+        toast.error("Failed to borrow book. Please try again.");
+      }
     } finally {
       setIsSubmitting(false);
     }
   };
 
-console.log("Book ID from URL:", bookId);
+  console.log("Book ID from URL:", bookId);
+  
   if (isLoading) {
     return (
       <div className="max-w-2xl mx-auto p-6">
@@ -78,7 +87,6 @@ console.log("Book ID from URL:", bookId);
     );
   }
 
-  
   if (error || !book) {
     return (
       <div className="max-w-2xl mx-auto p-6">
@@ -94,7 +102,6 @@ console.log("Book ID from URL:", bookId);
       </div>
     );
   }
-
 
   if (!book.isAvailable || book.copies < 1) {
     return (
@@ -149,7 +156,7 @@ console.log("Book ID from URL:", bookId);
       
       <Form {...form}>
         <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
-       
+         
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <FormField
               control={form.control}
@@ -228,7 +235,40 @@ console.log("Book ID from URL:", bookId);
             />
           </div>
 
-         
+          
+          <FormField
+            control={form.control}
+            name="quantity"
+            render={({ field }) => (
+              <FormItem>
+                <FormLabel>How Many Books You Want? *</FormLabel>
+                <FormControl>
+                  <Input 
+                    type="number"
+                    min={1}
+                    max={book.copies}
+                    placeholder={`Enter quantity (1-${book.copies})`}
+                    {...field}
+                    onChange={(e) => {
+                      const value = parseInt(e.target.value);
+                      if (value > book.copies) {
+                        field.onChange(book.copies);
+                      } else if (value < 1) {
+                        field.onChange(1);
+                      } else {
+                        field.onChange(value);
+                      }
+                    }}
+                    required
+                  />
+                </FormControl>
+                
+                <FormMessage />
+              </FormItem>
+            )}
+          />
+
+          {/* Date Selection */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <FormField
               control={form.control}
@@ -339,7 +379,7 @@ console.log("Book ID from URL:", bookId);
             )}
           />
 
-        
+          {/* Terms and Conditions */}
           <div className="p-4 border border-blue-200 rounded-lg bg-blue-50">
             <h3 className="font-semibold text-blue-800 mb-2">Terms & Conditions:</h3>
             <ul className="text-sm text-blue-700 list-disc list-inside space-y-1">
@@ -347,10 +387,12 @@ console.log("Book ID from URL:", bookId);
               <li>Books must be returned in good condition</li>
               <li>Late returns will incur fines ($1 per day)</li>
               <li>You are responsible for lost or damaged books</li>
-              <li>Please return the book on or before the due date</li>
+              <li>Maximum 5 copies per borrower</li>
+              <li>Quantity cannot exceed available copies</li>
             </ul>
           </div>
 
+          {/* Submit Button */}
           <div className="flex gap-4">
             <Button 
               type="button"

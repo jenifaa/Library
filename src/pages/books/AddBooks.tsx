@@ -44,10 +44,10 @@ export default function AddBooks() {
   return (
     <div>
       {" "}
-      <div className="flex justify-between items-center my-12 w-10/12 mx-auto">
+      <div className="flex justify-center items-center my-12 w-10/12 mx-auto">
         <Dialog>
           <DialogTrigger asChild>
-            <Button className="px-6 py-5 bg-blue-300 border-b-4 rounded-xl border-black text-white">
+            <Button className="px-6 py-5 bg-blue-500 border-b-4 rounded-xl border-black text-white">
               Add a New Book
             </Button>
           </DialogTrigger>
@@ -137,9 +137,7 @@ export default function AddBooks() {
             </Form>
           </DialogContent>
         </Dialog>
-        <Button className="px-6 py-5 bg-blue-300 border-b-4 rounded-xl border-black text-white">
-          Search By Title
-        </Button>
+      
       </div>
       <div className="w-11/12 mx-auto my-10">
         <h2 className="text-2xl font-bold text-gray-800 mb-6">Library Books</h2>
@@ -186,26 +184,6 @@ export default function AddBooks() {
                 </div>
               </div>
 
-              {/* <div className="mt-3 flex justify-between">
-                <button className="text-sm bg-blue-500 text-white px-3 py-1 rounded-lg hover:bg-blue-600 transition">
-                  Borrow
-                </button>
-
-                <button className="text-sm bg-red-500 text-white p-2 rounded-lg hover:bg-red-600 transition">
-                  <Trash2 size={16} />
-                </button>
-
-                <button className="text-sm bg-yellow-500 text-white p-2 rounded-lg hover:bg-yellow-600 transition">
-                  <Pencil size={16} />
-                </button>
-
-                <Link
-                  to="/detail"
-                  className="text-sm bg-green-500 text-white p-2 rounded-lg hover:bg-green-600 transition"
-                >
-                  <Eye size={16} />
-                </Link>
-              </div> */}
             </div>
           ))}
         </div>

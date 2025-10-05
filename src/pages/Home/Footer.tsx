@@ -7,14 +7,14 @@ import { Link } from "react-router";
 
 export default function Footer() {
   return (
-    <footer className="bg-gray-900 text-white">
-      {/* Main Footer Content */}
+    <footer className="bg-gray-900 text-white w-11/12 mx-auto">
+    
       <div className="container mx-auto px-4 py-12">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-          {/* Brand Section */}
+         
           <div className="lg:col-span-2">
             <div className="mb-6">
-              <h2 className="text-2xl font-bold mb-2">BOOKlovers</h2>
+              <h2 className="text-2xl font-bold font mb-2">WEBShelf</h2>
               <p className="text-gray-300 text-lg">Your Favorite Bookhell!</p>
             </div>
 
@@ -34,12 +34,12 @@ export default function Footer() {
             </div>
           </div>
 
-          {/* WHAT'S NEW Section */}
+         
           <div>
             <h3 className="text-lg font-semibold mb-6">WHAT'S NEW</h3>
             <div className="space-y-6">
-              {/* Book 1 */}
-              <div className="space-y-2">
+            
+              <div className="space-y-2 mb-8">
                 <h4 className="font-medium">The Story About Me</h4>
                 <div className="flex items-center gap-1">
                   {[...Array(4)].map((_, i) => (
@@ -52,7 +52,7 @@ export default function Footer() {
                 </div>
               </div>
 
-              {/* Book 2 */}
+           
               <div className="space-y-2">
                 <h4 className="font-medium">Design of the 20th Century</h4>
                 <div className="flex items-center gap-1">

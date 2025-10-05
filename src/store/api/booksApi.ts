@@ -66,7 +66,7 @@ tagTypes: ['Books', 'Borrow'],
         limit: number;
       };
     }, { page: number; limit?: number }>({
-      query: ({ page, limit = 10 }) => 
+      query: ({ page, limit = 7 }) => 
         `books?page=${page}&limit=${limit}`,
       providesTags: ['Books'],
     }),

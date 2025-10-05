@@ -22,7 +22,7 @@ export interface IBorrow{
   borrowerId: string;
   borrowDate: string;
   dueDate: string;
-  returnDate?: string;
+  quantity: number,
   status: 'borrowed' | 'returned' | 'overdue';
   fineAmount: number;
 }

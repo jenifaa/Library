@@ -1,4 +1,5 @@
 import { Button } from "@/components/ui/button";
+import Swal from "sweetalert2";
 import {
   Dialog,
   DialogClose,
@@ -36,10 +37,10 @@ import { toast } from "react-toastify";
 export function BooksTable() {
   const navigate = useNavigate();
   const [currentPage, setCurrentPage] = useState(1);
-  
+
   const { data, isLoading, error } = useGetPaginatedBooksQuery({
     page: currentPage,
-    limit: 10
+    limit: 7,
   });
 
   const [updateBook] = useUpdateBookMutation();
@@ -63,14 +64,46 @@ export function BooksTable() {
     toast.success("Book updated successfully! ✅");
     form.reset();
   };
+  const swalWithBootstrapButtons = Swal.mixin({
+    customClass: {
+      confirmButton: "bg-red-500 text-white px-4 py-2 mx-3 rounded-lg",
+      cancelButton: "bg-gray-500 text-white px-4 py-2 rounded-lg ml-2",
+    },
+    buttonsStyling: false,
+  });
 
   const handleDelete = (id: string) => {
-    deleteBook(id);
+    swalWithBootstrapButtons
+      .fire({
+        title: "Are you sure?",
+        text: "You won't be able to revert this!",
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonText: "Yes, delete it!",
+        cancelButtonText: "No, cancel!",
+        reverseButtons: true,
+      })
+      .then((result) => {
+        if (result.isConfirmed) {
+          deleteBook(id);
+          swalWithBootstrapButtons.fire(
+            "Deleted!",
+            "The book has been removed.",
+            "success"
+          );
+        } else if (result.dismiss === Swal.DismissReason.cancel) {
+          swalWithBootstrapButtons.fire(
+            "Cancelled",
+            "The book is safe!",
+            "error"
+          );
+        }
+      });
   };
 
   const handlePageChange = (newPage: number) => {
     setCurrentPage(newPage);
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+    window.scrollTo({ top: 0, behavior: "smooth" });
   };
 
   if (isLoading) {
@@ -104,6 +137,12 @@ export function BooksTable() {
 
   return (
     <div className="w-11/12 mx-auto">
+      <div className="text-center my-10">
+        <h2 className="mb-2 text-5xl font-bold">
+          All <span className="text-blue-800">Books</span>
+        </h2>
+        <p>Explore Our All Books Collection here...</p>
+      </div>
       <div className="overflow-hidden rounded-md border mt-3 mb-6">
         <Table>
           <TableHeader>
@@ -281,7 +320,6 @@ export function BooksTable() {
         </Table>
       </div>
 
-     
       {pagination.totalPages > 1 && (
         <div className="flex flex-col sm:flex-row items-center justify-between gap-4 mb-14">
           <div className="text-sm text-gray-600">
@@ -289,7 +327,7 @@ export function BooksTable() {
             {Math.min(currentPage * pagination.limit, pagination.totalBooks)} of{" "}
             {pagination.totalBooks} books
           </div>
-          
+
           <div className="flex items-center gap-2">
             <Button
               variant="outline"
@@ -300,33 +338,36 @@ export function BooksTable() {
               <ChevronLeft className="h-4 w-4" />
               Previous
             </Button>
-            
+
             <div className="flex items-center gap-1">
-              {Array.from({ length: Math.min(5, pagination.totalPages) }, (_, i) => {
-                let pageNum;
-                if (pagination.totalPages <= 5) {
-                  pageNum = i + 1;
-                } else if (currentPage <= 3) {
-                  pageNum = i + 1;
-                } else if (currentPage >= pagination.totalPages - 2) {
-                  pageNum = pagination.totalPages - 4 + i;
-                } else {
-                  pageNum = currentPage - 2 + i;
+              {Array.from(
+                { length: Math.min(5, pagination.totalPages) },
+                (_, i) => {
+                  let pageNum;
+                  if (pagination.totalPages <= 5) {
+                    pageNum = i + 1;
+                  } else if (currentPage <= 3) {
+                    pageNum = i + 1;
+                  } else if (currentPage >= pagination.totalPages - 2) {
+                    pageNum = pagination.totalPages - 4 + i;
+                  } else {
+                    pageNum = currentPage - 2 + i;
+                  }
+
+                  return (
+                    <Button
+                      key={pageNum}
+                      variant={currentPage === pageNum ? "default" : "outline"}
+                      size="sm"
+                      onClick={() => handlePageChange(pageNum)}
+                    >
+                      {pageNum}
+                    </Button>
+                  );
                 }
-                
-                return (
-                  <Button
-                    key={pageNum}
-                    variant={currentPage === pageNum ? "default" : "outline"}
-                    size="sm"
-                    onClick={() => handlePageChange(pageNum)}
-                  >
-                    {pageNum}
-                  </Button>
-                );
-              })}
+              )}
             </div>
-            
+
             <Button
               variant="outline"
               size="sm"

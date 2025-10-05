@@ -120,6 +120,7 @@ export default function BorrowSummery() {
           <TableHeader>
             <TableRow>
               <TableHead>Book Information</TableHead>
+              <TableHead>Book Quantity</TableHead>
               <TableHead>Borrower Details</TableHead>
               <TableHead>Dates</TableHead>
               <TableHead>Status</TableHead>
@@ -147,6 +148,12 @@ export default function BorrowSummery() {
                         <p className="font-semibold text-gray-900">{record.bookTitle}</p>
                         <p className="text-sm text-gray-600">by {record.bookId?.author}</p>
                         <p className="text-xs text-gray-500">ISBN: {record.bookId?.ISBN}</p>
+                      </div>
+                    </TableCell>
+                    <TableCell>
+                      <div>
+                        <p className="font-semibold text-gray-900">{record.quantity}</p>
+                      
                       </div>
                     </TableCell>
                     <TableCell>
