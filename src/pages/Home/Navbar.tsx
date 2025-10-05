@@ -9,16 +9,15 @@ const Navbar = () => {
 
   const navLinks = [
     { name: "Home", path: "/" },
-    { name: "Services", path: "/services" },
     { name: "Books", path: "/books" },
-    { name: "Borrow", path: "/borrow" },
-    { name: "Add Books", path: "/add" },
+    { name: "Borrow", path: "/borrow-summary" },
+    { name: "Add Books", path: "/create-book" },
   ];
 
   return (
     <header className="bg-white/80 backdrop-blur-lg  shadow-sm sticky top-0 z-50 border-b">
       <div className="container mx-auto px-12 flex justify-between items-center h-16">
-        {/* Logo */}
+       
         <Link to="/" className="text-xl font-bold text-shadow-red-950 flex items-center">
           <Lottie
             className="w-16 h-16"
@@ -29,15 +28,15 @@ const Navbar = () => {
           <h1 className="font">WebShelf</h1>
         </Link>
 
-        {/* Desktop Menu */}
+    
         <nav className="hidden md:flex items-center gap-6">
           {navLinks.map((link) => (
             <NavLink
               key={link.path}
               to={link.path}
               className={({ isActive }) =>
-                `text-sm font-medium transition ${
-                  isActive ? "text-red-900" : "text-red-800 hover:text-red-700"
+                `text-sm  transition ${
+                  isActive ? "text-black font-bold" : "text-black hover:font-bold"
                 }`
               }
             >

@@ -19,7 +19,8 @@ import { Textarea } from "@/components/ui/textarea";
 import { useAddBookMutation, useGetBookQuery } from "@/store/api/booksApi";
 import type { IBook } from "@/types";
 import { toast } from "react-toastify";
-import { Link } from "react-router";
+// import { Link } from "react-router";
+// import { Eye, Pencil, Trash2 } from "lucide-react";
 export default function AddBooks() {
   const [addBook] = useAddBookMutation();
   const form = useForm<Omit<IBook, "id" | "isAvailable">>({
@@ -29,7 +30,7 @@ export default function AddBooks() {
       genre: "",
       ISBN: "",
       description: "",
-      copies: "",
+      copies: 0,
     },
   });
 
@@ -43,7 +44,7 @@ export default function AddBooks() {
   return (
     <div>
       {" "}
-      <div className="flex justify-between items-center my-10">
+      <div className="flex justify-between items-center my-12 w-10/12 mx-auto">
         <Dialog>
           <DialogTrigger asChild>
             <Button className="px-6 py-5 bg-blue-300 border-b-4 rounded-xl border-black text-white">
@@ -116,10 +117,16 @@ export default function AddBooks() {
                   render={({ field }) => (
                     <FormItem className="mt-3">
                       <FormLabel>Copies</FormLabel>
-                      <Input {...field} placeholder="Number of Copies" />
+                      <Input
+                        type="number"
+                        {...field}
+                        placeholder="Number of Copies"
+                        min={0}
+                      />
                     </FormItem>
                   )}
                 />
+
                 <DialogFooter className="mt-4">
                   <DialogClose asChild>
                     <Button variant="outline">Cancel</Button>
@@ -130,9 +137,8 @@ export default function AddBooks() {
             </Form>
           </DialogContent>
         </Dialog>
-
-        <Button className="px-5 py-2 bg-blue-300 text-semibold border-b-4 rounded-xl border-black">
-          Search by Title
+        <Button className="px-6 py-5 bg-blue-300 border-b-4 rounded-xl border-black text-white">
+          Search By Title
         </Button>
       </div>
       <div className="w-11/12 mx-auto my-10">
@@ -180,17 +186,26 @@ export default function AddBooks() {
                 </div>
               </div>
 
-              <div className="mt-3 flex justify-between">
+              {/* <div className="mt-3 flex justify-between">
                 <button className="text-sm bg-blue-500 text-white px-3 py-1 rounded-lg hover:bg-blue-600 transition">
                   Borrow
                 </button>
-                <button className="text-sm bg-red-500 text-white px-3 py-1 rounded-lg hover:bg-red-600 transition">
-                  Delete
+
+                <button className="text-sm bg-red-500 text-white p-2 rounded-lg hover:bg-red-600 transition">
+                  <Trash2 size={16} />
                 </button>
-                <Link to="/detail" className="text-sm bg-green-500 text-white px-3 py-1 rounded-lg hover:bg-green-600 transition">
-                  Details
+
+                <button className="text-sm bg-yellow-500 text-white p-2 rounded-lg hover:bg-yellow-600 transition">
+                  <Pencil size={16} />
+                </button>
+
+                <Link
+                  to="/detail"
+                  className="text-sm bg-green-500 text-white p-2 rounded-lg hover:bg-green-600 transition"
+                >
+                  <Eye size={16} />
                 </Link>
-              </div>
+              </div> */}
             </div>
           ))}
         </div>

@@ -7,6 +7,7 @@ import BooksTable from "@/pages/books/BooksTable";
 import AddBooks from "@/pages/books/AddBooks";
 import BookDetail from "@/pages/books/BookDetail";
 import BorrowBooks from "@/pages/Borrow/BorrowBooks";
+import BorrowSummery from "@/pages/Borrow/BorrowSummery";
 
 const router = createBrowserRouter([
   {
@@ -26,7 +27,7 @@ const router = createBrowserRouter([
         element: <BooksTable></BooksTable>,
       },
       {
-        path: "/add",
+        path: "/create-book",
         element: <AddBooks></AddBooks>,
       },
       {
@@ -34,9 +35,13 @@ const router = createBrowserRouter([
         element: <BookDetail></BookDetail>,
       },
       {
-        path: "/borrow",
+       path:"/borrow-book/:bookId",
         element: <BorrowBooks></BorrowBooks>,
       },
+      {
+        path:"/borrow-summary",
+        element:<BorrowSummery></BorrowSummery>
+      }
     ],
   },
 ]);
