@@ -40,7 +40,7 @@ The Library Management System is designed to streamline library operations with 
 
 ## 📁 Project Structure
 
-
+```
 library-management-system/
 ├── client/ # Frontend React application
 │ ├── src/
@@ -56,7 +56,7 @@ library-management-system/
 │ └── package.json
 └── README.md
 
-
+```
 
 ## 🚀 Quick Start
 
