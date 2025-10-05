@@ -112,7 +112,7 @@ Client will run on http://localhost:5173
 7. **🗄️ Database Models**
 
 ### Book Schema
-
+```
 javascript
 {
   title: String,
@@ -123,9 +123,10 @@ javascript
   copies: Number,
   isAvailable: Boolean
 }
+```
 
 ### Borrow Record Schema
-
+```
 javascript
 {
   bookId: ObjectId,
@@ -141,7 +142,7 @@ javascript
   fineAmount: Number
 }
 
-
+```
 **🔌 API Endpoints**
 
 **Books Management**
