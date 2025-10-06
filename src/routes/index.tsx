@@ -8,6 +8,7 @@ import AddBooks from "@/pages/books/AddBooks";
 import BookDetail from "@/pages/books/BookDetail";
 import BorrowBooks from "@/pages/Borrow/BorrowBooks";
 import BorrowSummery from "@/pages/Borrow/BorrowSummery";
+import AboutUs from "@/pages/about/AboutUs";
 
 const router = createBrowserRouter([
   {
@@ -41,6 +42,10 @@ const router = createBrowserRouter([
       {
         path:"/borrow-summary",
         element:<BorrowSummery></BorrowSummery>
+      },
+      {
+        path:"/about",
+        element:<AboutUs></AboutUs>
       }
     ],
   },

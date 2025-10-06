@@ -387,7 +387,6 @@ export default function BorrowBooks() {
               <li>Books must be returned in good condition</li>
               <li>Late returns will incur fines ($1 per day)</li>
               <li>You are responsible for lost or damaged books</li>
-              <li>Maximum 5 copies per borrower</li>
               <li>Quantity cannot exceed available copies</li>
             </ul>
           </div>

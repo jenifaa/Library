@@ -12,6 +12,7 @@ const Navbar = () => {
     { name: "Books", path: "/books" },
     { name: "Borrow", path: "/borrow-summary" },
     { name: "Add Books", path: "/create-book" },
+    { name: "About Us", path: "/about" },
   ];
 
   return (

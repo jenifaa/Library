@@ -1,5 +1,6 @@
-import { Link } from "react-router";
+
 import { BookOpen, Users, Clock, Star,  ArrowRight } from "lucide-react";
+import { Link } from "react-router";
 
 export default function WhyChooseUs() {
   const features = [
