@@ -4,31 +4,9 @@ import { useState } from "react";
 export default function AboutUs() {
   const [activeTab, setActiveTab] = useState("history");
 
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.2
-      }
-    }
-  };
-
-  const itemVariants = {
-    hidden: { y: 20, opacity: 0 },
-    visible: {
-      y: 0,
-      opacity: 1,
-      transition: {
-        duration: 0.6,
-        ease: "easeOut"
-      }
-    }
-  };
-
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-50 to-blue-50">
-     
+      {/* Hero Section */}
       <section className="relative bg-gray-800 text-white py-24">
         <div className="absolute inset-0 bg-black/40"></div>
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
@@ -51,17 +29,17 @@ export default function AboutUs() {
         </div>
       </section>
 
-  
+      {/* Mission & Vision */}
       <section className="py-10 bg-white">
         <div className="w-11/12 mx-auto px-4 sm:px-6 lg:px-8">
-          <motion.div
-            variants={containerVariants}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true }}
-            className="grid md:grid-cols-2 gap-12"
-          >
-            <motion.div variants={itemVariants} className="bg-blue-50 p-5 rounded-2xl">
+          <div className="grid md:grid-cols-2 gap-12">
+            <motion.div 
+              initial={{ y: 20, opacity: 0 }}
+              whileInView={{ y: 0, opacity: 1 }}
+              transition={{ duration: 0.6, ease: "easeOut" }}
+              viewport={{ once: true }}
+              className="bg-blue-50 p-5 rounded-2xl"
+            >
               <div className="w-12 h-12 bg-blue-600 rounded-full flex items-center justify-center mb-4">
                 <span className="text-2xl">🎯</span>
               </div>
@@ -74,7 +52,13 @@ export default function AboutUs() {
               </p>
             </motion.div>
 
-            <motion.div variants={itemVariants} className="bg-purple-50 p-5 rounded-2xl">
+            <motion.div 
+              initial={{ y: 20, opacity: 0 }}
+              whileInView={{ y: 0, opacity: 1 }}
+              transition={{ duration: 0.6, ease: "easeOut", delay: 0.2 }}
+              viewport={{ once: true }}
+              className="bg-purple-50 p-5 rounded-2xl"
+            >
               <div className="w-12 h-12 bg-purple-600 rounded-full flex items-center justify-center mb-4">
                 <span className="text-2xl">🔭</span>
               </div>
@@ -86,11 +70,11 @@ export default function AboutUs() {
                 strengthens our community bonds.
               </p>
             </motion.div>
-          </motion.div>
+          </div>
         </div>
       </section>
 
-     
+      {/* Statistics */}
       <section className="py-20 bg-gray-900 text-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
@@ -129,7 +113,7 @@ export default function AboutUs() {
         </div>
       </section>
 
-    
+      {/* Detailed Information Tabs */}
       <section className="py-12 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
@@ -148,7 +132,7 @@ export default function AboutUs() {
             </p>
           </motion.div>
 
-         
+          {/* Tabs */}
           <div className="mb-12">
             <div className="flex flex-wrap justify-center gap-4 mb-8">
               {[
@@ -172,7 +156,7 @@ export default function AboutUs() {
               ))}
             </div>
 
-         
+            {/* Tab Content */}
             <motion.div
               key={activeTab}
               initial={{ opacity: 0, y: 20 }}

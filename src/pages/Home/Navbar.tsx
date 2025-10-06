@@ -2,8 +2,7 @@ import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Menu, X } from "lucide-react";
 import { Link, NavLink } from "react-router";
-import Lottie from "lottie-react";
-import animationData from "/NextLevel/library-management/src/assets/animation/logo.json";
+
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
 
@@ -20,12 +19,7 @@ const Navbar = () => {
       <div className="container mx-auto px-12 flex justify-between items-center h-16">
        
         <Link to="/" className="text-xl font-bold text-shadow-red-950 flex items-center">
-          <Lottie
-            className="w-16 h-16"
-            animationData={animationData}
-            loop={true}
-            autoplay={true}
-          />
+         <img className="w-12 h-12 mr-2" src="https://i.ibb.co.com/whW5RJzm/logo.png" alt="" />
           <h1 className="font">WebShelf</h1>
         </Link>
 

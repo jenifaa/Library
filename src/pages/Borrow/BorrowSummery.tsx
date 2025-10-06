@@ -123,11 +123,7 @@ export default function BorrowSummery() {
               (r) => r.status === "borrowed" && new Date() > new Date(r.dueDate)
             ).length,
           },
-          {
-            key: "returned" as FilterType,
-            label: "Returned",
-            count: borrowRecords.filter((r) => r.status === "returned").length,
-          },
+         
         ].map(({ key, label, count }) => (
           <Button
             key={key}

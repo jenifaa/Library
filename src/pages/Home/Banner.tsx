@@ -11,6 +11,26 @@ export default function Banner() {
   const slidesRef = useRef<HTMLDivElement[]>([]);
   const [currentIndex, setCurrentIndex] = useState(0);
 
+  const links = [
+    "https://i.ibb.co.com/mrHgFjpJ/b2.jpg",
+    "https://i.ibb.co.com/xKKvrtcV/b3.jpg",
+    "https://i.ibb.co.com/vvvkq2cT/b4.jpg",
+    "https://i.ibb.co.com/rRT4DTd8/b5.jpg",
+    "https://i.ibb.co.com/9fKvvb0/b6.jpg",
+    "https://i.ibb.co.com/xtJw55yL/b7.jpg",
+    "https://i.ibb.co.com/N2PCSSwJ/b8.jpg",
+    "https://i.ibb.co.com/YTdZYcZ9/b10.jpg",
+    "https://i.ibb.co.com/Fqf8PRXq/boo4.jpg",
+    "https://i.ibb.co.com/8HMsQvc/book.jpg",
+    "https://i.ibb.co.com/mFr38WWr/book1.jpg",
+   
+    "https://i.ibb.co.com/GvMFxX6G/book5.jpg",
+    "https://i.ibb.co.com/5gd1KFLB/book6.jpg",
+    "https://i.ibb.co.com/9kzNScpL/book7.jpg",
+    "https://i.ibb.co.com/KcCRVbTj/book8.jpg",
+    "https://i.ibb.co.com/r2FfnJXm/book9.jpg"
+  ];
+
   const slideTexts = [
     {
       title: "Discover New Worlds",
@@ -107,21 +127,21 @@ export default function Banner() {
             whileHover={{ scale: 1.05, y: -10 }}
             transition={{ type: "spring", stiffness: 300 }}
             className="slide__img w-64 h-80 object-cover rounded-2xl shadow-2xl" 
-            src="/src/assets/images/book1.jpg" 
+            src={links[10]} // book1.jpg
             alt="Book 1" 
           />
           <motion.img 
             whileHover={{ scale: 1.05, y: -10 }}
             transition={{ type: "spring", stiffness: 300 }}
             className="slide__img w-72 h-96 object-cover rounded-2xl shadow-2xl" 
-            src="/src/assets/images/book6.jpg" 
+            src={links[14]} // book6.jpg
             alt="Book 6" 
           />
           <motion.img 
             whileHover={{ scale: 1.05, y: -10 }}
             transition={{ type: "spring", stiffness: 300 }}
             className="slide__img w-64 h-80 object-cover rounded-2xl shadow-2xl" 
-            src="/src/assets/images/book3.jpg" 
+            src={links[11]} // book2.jpg
             alt="Book 3" 
           />
         </div>
@@ -133,21 +153,21 @@ export default function Banner() {
             whileHover={{ scale: 1.05, y: -10 }}
             transition={{ type: "spring", stiffness: 300 }}
             className="slide__img w-72 h-96 object-cover rounded-2xl shadow-2xl" 
-            src="/src/assets/images/boo4.jpg" 
+            src={links[8]} // boo4.jpg
             alt="Book 4" 
           />
           <motion.img 
             whileHover={{ scale: 1.05, y: -10 }}
             transition={{ type: "spring", stiffness: 300 }}
             className="slide__img w-64 h-80 object-cover rounded-2xl shadow-2xl" 
-            src="/src/assets/images/book5.jpg" 
+            src={links[13]} // book5.jpg
             alt="Book 5" 
           />
           <motion.img 
             whileHover={{ scale: 1.05, y: -10 }}
             transition={{ type: "spring", stiffness: 300 }}
             className="slide__img w-72 h-96 object-cover rounded-2xl shadow-2xl" 
-            src="/src/assets/images/book6.jpg" 
+            src={links[14]} // book6.jpg
             alt="Book 6" 
           />
         </div>
@@ -159,21 +179,21 @@ export default function Banner() {
             whileHover={{ scale: 1.05, y: -10 }}
             transition={{ type: "spring", stiffness: 300 }}
             className="slide__img w-64 h-80 object-cover rounded-2xl shadow-2xl" 
-            src="/src/assets/images/book5.jpg" 
+            src={links[13]} // book5.jpg
             alt="Book 5" 
           />
           <motion.img 
             whileHover={{ scale: 1.05, y: -10 }}
             transition={{ type: "spring", stiffness: 300 }}
             className="slide__img w-72 h-96 object-cover rounded-2xl shadow-2xl" 
-            src="/src/assets/images/book3.jpg" 
+            src={links[11]} // book2.jpg
             alt="Book 3" 
           />
           <motion.img 
             whileHover={{ scale: 1.05, y: -10 }}
             transition={{ type: "spring", stiffness: 300 }}
             className="slide__img w-64 h-80 object-cover rounded-2xl shadow-2xl" 
-            src="/src/assets/images/b6.jpg" 
+            src={links[4]} // b6.jpg
             alt="Book 2" 
           />
         </div>
